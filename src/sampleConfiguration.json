@@ -1,0 +1,28 @@
+[
+  {
+    "type": "textInput",
+    "label": "This is a text input",
+    "path": "store.the.data.here"
+  },
+  {
+    "type": "integerInput",
+    "label": "This is a integer input",
+    "path": "store.the.data.here",
+    "min": 0,
+    "max": 100
+  },
+  {
+    "type": "enumInput",
+    "label": "This is a enum input",
+    "path": "store.the.data.here",
+    "values": ["yes", "no", "maybe"]
+  },
+  {
+    "type": "currencyInput",
+    "label": "This is a currency input",
+    "path": "store.the.data.here",
+    "min": 0,
+    "max": 100,
+    "currencies": ["EUR", "USD", "GBP"]
+  }
+]
