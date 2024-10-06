@@ -1,0 +1,18 @@
+[
+  {
+    "type": "textInput",
+    "label": "Driver Name",
+    "path": "driver.name",
+    "defaultValue": "Peter Dee"
+  },
+  {
+    "type": "currencyInput",
+    "label": "Vehicle Trade Value",
+    "path": "vehicle.tradeValue",
+    "currencies": ["USD", "EUR", "GBP"],
+    "defaultValue": {
+      "currency": "USD",
+      "value": 3554.5
+    }
+  }
+]

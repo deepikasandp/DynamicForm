@@ -1,6 +1,6 @@
 import { assocPath } from "ramda";
 import { MyObject } from "./types";
-import objectJson from "./object.json";
+import objectJson from "../data/object.json";
 
 export const setDeep = (
   obj: MyObject,

@@ -1,0 +1,12 @@
+{
+  "vehicle": {
+    "regplate": "ABC1234",
+    "tradeValue": {
+      "currency": "USD",
+      "value": 3554.5
+    }
+  },
+  "driver": {
+    "name": "Peter Parker"
+  }
+}
