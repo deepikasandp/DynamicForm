@@ -112,11 +112,28 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ config, object }) => {
                 label="Value"
                 type="number"
                 value={value?.value  || field.defaultValue?.value  || ''}
-                inputProps={{ min: field.min, max: field.max }}
-                onChange={(e) => handleChange(`${field.path}.value`, parseInt(e.target.value, 10))}
-                style={{ flex: 2 }}
-                InputProps={{
-                  style: { textAlign: 'left' }
+                inputProps={{
+                  min: field.min,
+                  max: field.max,
+                  step: "0.001"
+                }}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  const decimalPattern = /^\d+(\.\d{0,3})?$/;
+                  
+                  if (decimalPattern.test(inputValue) || inputValue === '') {
+                    const parsedValue = parseFloat(inputValue);
+                    const isValidMin = field.min !== undefined ? parsedValue >= field.min : true;
+                    const isValidMax = field.max !== undefined ? parsedValue <= field.max : true;
+              
+                    if (!isNaN(parsedValue) && isValidMin && isValidMax)  {
+                      handleChange(`${field.path}.value`, parsedValue);
+                    }
+                  }
+                }}
+                sx={{ 
+                  flex: 2, 
+                  textAlign: 'left'
                 }}
               />
             </div>
