@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, Button, Grid, Typography, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import { MyObject } from './types';
-import { setDeep } from './utils';
+import { MyObject } from '../types';
+import { setDeep } from '../utils';
 
 interface Field {
   type: string;
@@ -12,6 +12,8 @@ interface Field {
   max?: number;
   currencies?: string[];
   defaultValue?: any;
+  condition?: Field;
+  value?: string;
 }
 
 interface DynamicFormProps {
@@ -20,9 +22,9 @@ interface DynamicFormProps {
 }
 
 const DynamicForm: React.FC<DynamicFormProps> = ({ config, object }) => {
-  const [myObject, setMyObject] = useState<MyObject>(object);
+  const [myObject, setMyObject] = useState<MyObject>({});
   const [savedObject, setSavedObject] = useState<MyObject>();
-  const [currentConfig, setCurrentConfig] = useState(config);
+  const [currentConfig, setCurrentConfig] = useState<Field[]>([]);
 
   useEffect(() => {
     setCurrentConfig(config);
@@ -42,6 +44,14 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ config, object }) => {
 
   const renderField = (field: Field) => {
     const value = field.path.split('.').reduce((obj: any, key: string) => obj?.[key], myObject);
+
+    // Check if the field has a condition
+    if (field.condition) {
+      const conditionValue = field.condition.path.split('.').reduce((obj: any, key: string) => obj?.[key], myObject);
+      if (conditionValue !== field.condition.value) {
+        return null; // If condition is not met, don't render the field
+      }
+    }
 
     switch (field.type) {
       case 'textInput':
@@ -74,6 +84,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ config, object }) => {
             <FormControl variant="outlined" fullWidth>
               <InputLabel>{field.label}</InputLabel>
               <Select
+                aria-label={field.label}
                 label={field.label}
                 value={value || field.defaultValue || ''}
                 onChange={(e) => handleChange(field.path, e.target.value)}

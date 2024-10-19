@@ -1,6 +1,5 @@
-import React from "react";
 import "./styles/styles.css";
-import DynamicForm from "./components/DynamicForm";
+import DynamicForm from "./components/DynamicForm/DynamicForm";
 import configuration from "./data/configurationToImplement.json";
 import { getData } from "./components/utils";
 

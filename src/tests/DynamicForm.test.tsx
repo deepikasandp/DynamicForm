@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import DynamicForm from '../components/DynamicForm';
-import mockConfig from '../tests/mockData/mockConfig.json';
+import DynamicForm from '../components/DynamicForm/DynamicForm';
+import mockConfig from '../tests/mockData/mockConfig1.json';
 import mockObject from '../tests/mockData/mockObject.json';
 
 describe('DynamicForm Component', () => {

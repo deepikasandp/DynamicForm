@@ -2,8 +2,8 @@ import React, { ChangeEventHandler, useState } from 'react';
 import Paper from "@mui/material/Paper";
 import { Button, Grid, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { MyObject } from './types';
-import { setDeep } from './utils';
+import { MyObject } from '../types';
+import { setDeep } from '../utils';
 
 type StaticFormProps = {
   object: MyObject;
