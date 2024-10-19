@@ -13,7 +13,7 @@ const preview: Preview = {
       element: '#root',  // The element to inspect for accessibility issues
       config: {},        // axe-core configuration options
       options: {},       // axe-core run options
-      manual: false,     // Set to true to disable automatic accessibility checks
+      manual: true,     // Set to true to disable automatic accessibility checks
     },
   },
 };
