@@ -11,7 +11,7 @@ interface Field {
   min?: number;
   max?: number;
   currencies?: string[];
-  defaultValue?: any;
+  defaultValue?: string | number | null;
   condition?: Field;
   value?: string;
 }
@@ -34,7 +34,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ config, object }) => {
     setMyObject(object);
   }, [object]);
 
-  const handleChange = (path: string, value: any) => {
+  const handleChange = (path: string, value: string) => {
     setMyObject(setDeep(myObject, path, value));
   };
 

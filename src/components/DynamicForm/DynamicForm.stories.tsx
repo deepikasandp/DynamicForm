@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import DynamicForm from './DynamicForm';
-import mockConfigSetOne from '../../tests/mockData/mockConfig1.json';
+import configuration from "../../data/configurationToImplement.json";
+import { getData } from "../../components/utils";
 import mockConfigSetTwo from '../../tests/mockData/mockConfig2.json';
 import mockObject from '../../tests/mockData/mockObject.json';
 
@@ -16,8 +17,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    config: mockConfigSetOne,
-    object: mockObject,
+    config: configuration,
+    object: getData(),
   },
 };
 
