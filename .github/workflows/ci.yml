@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # or your preferred Node.js version
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Lint code
+      run: npm run lint # Make sure you have a lint script in your package.json
+
+    - name: Run tests
+      run: npm test -- --watchAll=false # Adjust as needed for your test setup
+
+    - name: Build the application
+      run: npm run build # Ensure you have a build script in your package.json
